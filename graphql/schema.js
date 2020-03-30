@@ -18,7 +18,7 @@ const schema = buildSchema(`
 
 	type Tag {
 		id: ID!
-		tag: String!
+		title: String!
 	}
 
 	type User {
@@ -34,7 +34,7 @@ const schema = buildSchema(`
 		deletePost(id: ID!): Post!
 		addPostTag(postId: ID!, tagId: ID!): Post!
 		removePostTag(postId: ID!, tagId: ID!): Post!
-		createTag(tag: String!): Tag!
+		createTag(title: String!): Tag!
 	}
 `);
 
