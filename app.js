@@ -86,6 +86,6 @@ mongoose.connect(config.MONGO_URI, { useNewUrlParser: true }, (err) => {
     	console.log('MongoDB Successfully Connected ...');
 });
 
-app.listen(process.env.PORT || 4000, () => {
-	console.log(`Server started on http://localhost:4000`);
+app.listen(process.env.PORT || 3000, () => {
+	console.log(`Server started on http://localhost:3000`);
 });
