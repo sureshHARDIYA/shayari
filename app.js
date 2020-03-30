@@ -6,6 +6,7 @@ const graphqlHTTP = require('express-graphql');
 const mongoose = require('mongoose');
 const passport = require('passport');
 const authenticate = require('./authenticate');
+const cors = require('cors')
 
 const User = require('./models/user');
 const schema = require('./graphql/schema');
@@ -13,6 +14,34 @@ const resolver = require('./graphql/resolver');
 const config = require('./config/keys');
 
 const app = express();
+
+app.options('*', cors())
+
+var allowedOrigins = [
+  'http://localhost',
+  'http://localhost:3000',
+  'http://localhost:3001',
+  'https://reviewpaper.herokuapp.com',
+  'https://reviewpaper.herokuapp.com/*',
+  '//*.herokuapp.com:*/*'
+]
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      // allow requests with no origin
+      // (like mobile apps or curl requests)
+      if (!origin) return callback(null, true)
+      if (allowedOrigins.indexOf(origin) === -1) {
+        var msg = 'The CORS policy for this site does not ' +
+          'allow access from the specified Origin.'
+        return callback(new Error(msg), false)
+      }
+      return callback(null, true)
+    }
+  })
+)
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(passport.initialize());
