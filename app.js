@@ -1,3 +1,6 @@
+require('babel-register')
+require('babel-polyfill')
+
 const express = require('express');
 const graphqlHTTP = require('express-graphql');
 const mongoose = require('mongoose');
@@ -43,7 +46,8 @@ app.post('/login', passport.authenticate('local'), (req, res) => {
 
 app.use('/graphql', authenticate.verifyUser, graphqlHTTP({
 	schema,
-	rootValue: resolver
+	rootValue: resolver,
+	graphiql: true,
 }));
 
 mongoose.connect(config.MONGO_URI, { useNewUrlParser: true }, (err) => {
