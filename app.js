@@ -1,5 +1,6 @@
 require("babel-register");
 require("babel-polyfill");
+require("dotenv").config();
 
 const express = require("express");
 const graphqlHTTP = require("express-graphql");
@@ -12,7 +13,6 @@ const bodyParser = require("body-parser");
 const User = require("./models/user");
 const schema = require("./graphql/schema");
 const resolver = require("./graphql/resolver");
-const config = require("./config/keys");
 
 const app = express();
 
@@ -91,11 +91,11 @@ app.use(
   })
 );
 
-mongoose.connect(config.MONGO_URI, { useNewUrlParser: true }, err => {
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true }, err => {
   if (err) console.log(err.message);
   else console.log("MongoDB Successfully Connected ...");
 });
 
-app.listen(process.env.PORT || 3000, () => {
-  console.log(`Server started on http://localhost:3000`);
+app.listen(process.env.PORT || 4000, () => {
+  console.log(`Server started on http://localhost:4000`);
 });
