@@ -5,7 +5,6 @@ const ExtractJwt = require("passport-jwt").ExtractJwt;
 const jwt = require("jsonwebtoken");
 
 const User = require("./models/user");
-const config = require("./config/keys");
 
 // local strategy
 exports.local = passport.use(
