@@ -13,11 +13,13 @@ const schema = buildSchema(`
 		body: String!
 		tags: [Tag]
 		owner: User!
+		createdAt: String
 	}
 
 	type Tag {
 		id: ID!
 		title: String!
+		createdAt: String
 	}
 
 	type User {
@@ -25,6 +27,7 @@ const schema = buildSchema(`
 		name: String
 		about: String
 		email: String
+		createdAt: String
 	}
 
 	type Mutation {
