@@ -1,10 +1,10 @@
-const { buildSchema } = require('graphql');
+const { buildSchema } = require("graphql");
 
 const schema = buildSchema(`
 	type Query {
 		posts: [Post!]!
 		post(id: ID!): Post!
-		tags: [Tag!]!
+		tags: [Tag]
 		tag(id: ID!): Tag!
 	}
 
@@ -12,7 +12,7 @@ const schema = buildSchema(`
 		id: ID!
 		title: String!
 		body: String!
-		tags: [Tag!]!
+		tags: [Tag]
 		owner: User!
 	}
 
@@ -29,12 +29,13 @@ const schema = buildSchema(`
 	}
 
 	type Mutation {
-		addPost(title: String!, body: String!): Post!
+		addPost(title: String!, body: String!, tags: [String]): Post!
 		updatePost(id: ID!, title: String, body: String): Post!
 		deletePost(id: ID!): Post!
 		addPostTag(postId: ID!, tagId: ID!): Post!
 		removePostTag(postId: ID!, tagId: ID!): Post!
 		createTag(title: String!): Tag!
+		deleteTag(id: ID!): Tag!
 	}
 `);
 
