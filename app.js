@@ -22,8 +22,8 @@ var allowedOrigins = [
   "http://localhost",
   "http://localhost:3000",
   "http://localhost:3001",
-  "https://shayariji.herokuapp.com/",
-  "https://shayariji.herokuapp.com/*",
+  "https://shayarifrontend.herokuapp.com/",
+  "https://shayarifrontend.herokuapp.com/*",
   "//*.herokuapp.com:*/*"
 ];
 
