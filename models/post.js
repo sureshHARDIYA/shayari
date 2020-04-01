@@ -18,7 +18,7 @@ const postSchema = new Schema(
       ref: "User"
     }
   },
-  { timestamps: true }
+  { timestamps: true, toObject: { getters: true }, toJSON: { getters: true, virtuals: true }, }
 );
 
 module.exports = mongoose.model("Post", postSchema);

@@ -7,6 +7,7 @@ const resolver = {
   // Queries
   posts: () => {
     return Post.find()
+      .sort([['createdAt', 'descending']])
       .populate("owner tags")
       .then(posts => posts)
       .catch(err => err);
